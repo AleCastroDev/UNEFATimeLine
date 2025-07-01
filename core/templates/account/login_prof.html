@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'styles/base.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/index.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/account.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <title>Login</title>
+</head>
+<body>
+    <div class="logo">
+        <img src="{% static 'img/UNEFA TimeLine..png'%}">
+    </div>
+    <div class="txt">
+        <h1>Iniciar sesión</h1>
+    </div>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        {% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                    <div class="message {{ message.tags }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+        <div class="svg">
+            {% comment %} <img src="{% static 'img/ilustracion.svg'%}"> {% endcomment %}
+        </div>
+        <div class="links">
+            <button type="submit" class="btn-primary">Iniciar como profesor</button>
+            <p><a href="{% url 'login' %}">Iniciar como alumno</a></p>
+            <p>¿Aún no tienes una cuenta? <a href="{% url 'registro' %}">Registrate</a></p>
+        </div>
+    </form>
+    <script src="{% static 'js/base.js' %}"></script>
+</body>
+</html>

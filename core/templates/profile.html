@@ -1,0 +1,210 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'styles/base.css'%}">
+    <link rel="stylesheet" href="{% static 'styles/index.css'%}">
+    <link rel="stylesheet" href="{% static 'styles/profile.css'%}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <title>Perfil</title>
+</head>
+<body>
+    <header>
+        <h1>Hola, {{ primer_nombre }}</h1>
+        <div class="logo">
+            <img src="{% static 'img/UNEFA TimeLine..png'%}">
+        </div>
+    </header>
+    <div class="datos">
+        <h2>Datos personales</h2>
+        <div class="datos_container">
+            <div class="datos_card">
+                <div class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512l388.6 0c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304l-91.4 0z"/></svg>
+                </div>
+                <div class="txt">
+                    <h3>Nombre completo</h3>
+                    <p>{{ nombre_completo }}</p>
+                </div>
+                <div class="edit" id="editName" data-target="#updateNameModal">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M471.6 21.7c-21.9-21.9-57.3-21.9-79.2 0L362.3 51.7l97.9 97.9 30.1-30.1c21.9-21.9 21.9-57.3 0-79.2L471.6 21.7zm-299.2 220c-6.1 6.1-10.8 13.6-13.5 21.9l-29.6 88.8c-2.9 8.6-.6 18.1 5.8 24.6s15.9 8.7 24.6 5.8l88.8-29.6c8.2-2.7 15.7-7.4 21.9-13.5L437.7 172.3 339.7 74.3 172.4 241.7zM96 64C43 64 0 107 0 160L0 416c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-96c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 96c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-256c0-17.7 14.3-32 32-32l96 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L96 64z"/></svg>
+                </div>
+            </div>
+            <div class="datos_card">
+                <div class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M64 32C28.7 32 0 60.7 0 96L0 416c0 35.3 28.7 64 64 64l448 0c35.3 0 64-28.7 64-64l0-320c0-35.3-28.7-64-64-64L64 32zm80 256l64 0c44.2 0 80 35.8 80 80c0 8.8-7.2 16-16 16L80 384c-8.8 0-16-7.2-16-16c0-44.2 35.8-80 80-80zm-32-96a64 64 0 1 1 128 0 64 64 0 1 1 -128 0zm256-32l128 0c8.8 0 16 7.2 16 16s-7.2 16-16 16l-128 0c-8.8 0-16-7.2-16-16s7.2-16 16-16zm0 64l128 0c8.8 0 16 7.2 16 16s-7.2 16-16 16l-128 0c-8.8 0-16-7.2-16-16s7.2-16 16-16zm0 64l128 0c8.8 0 16 7.2 16 16s-7.2 16-16 16l-128 0c-8.8 0-16-7.2-16-16s7.2-16 16-16z"/></svg>
+                </div>
+                <div class="txt">
+                    <h3>Cédula</h3>
+                    <p>V.-{{ cedula }}</p>
+                </div>
+                <div class="edit" "editCedula" data-target="#updateCedulaModal">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M471.6 21.7c-21.9-21.9-57.3-21.9-79.2 0L362.3 51.7l97.9 97.9 30.1-30.1c21.9-21.9 21.9-57.3 0-79.2L471.6 21.7zm-299.2 220c-6.1 6.1-10.8 13.6-13.5 21.9l-29.6 88.8c-2.9 8.6-.6 18.1 5.8 24.6s15.9 8.7 24.6 5.8l88.8-29.6c8.2-2.7 15.7-7.4 21.9-13.5L437.7 172.3 339.7 74.3 172.4 241.7zM96 64C43 64 0 107 0 160L0 416c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-96c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 96c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-256c0-17.7 14.3-32 32-32l96 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L96 64z"/></svg>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="materias">
+        <h2>Materias</h2>
+        <div class="add_materia" id="addMateria" data-target="#carrerasModal">
+            <h3>Inscribir materia</h3>
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 144L48 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l144 0 0 144c0 17.7 14.3 32 32 32s32-14.3 32-32l0-144 144 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-144 0 0-144z"/></svg>
+            </div>
+        </div>
+        <div class="materias_container">
+            {% for materia in materias %}
+            <div class="materias_card">
+                <div class="icon">
+                    {{ materia.svg_icono|safe }}
+                </div>
+                <div class="txt">
+                    <h3>{{ materia.nombre }}</h3>
+                    <p><span>Carrera: </span>{{ materia.id_semestre.id_carrera.nombre }}</p>
+                    <p><span>Semestre: </span>{{ materia.id_semestre.numero }}</p>
+                    <p><span>Profesor: </span>{{ materia.id_profesor.nombre }}</p>
+                </div>
+                <div class="delete">
+                    <svg data-target="#deleteModal" data-id="{{ materia.id }}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M135.2 17.7L128 32 32 32C14.3 32 0 46.3 0 64S14.3 96 32 96l384 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-96 0-7.2-14.3C307.4 6.8 296.3 0 284.2 0L163.8 0c-12.1 0-23.2 6.8-28.6 17.7zM416 128L32 128 53.2 467c1.6 25.3 22.6 45 47.9 45l245.8 0c25.3 0 46.3-19.7 47.9-45L416 128z"/></svg>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="logout" id="logout" data-target="#logoutModal">
+        <h3>Cerrar sesión</h3>
+        <div>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"/></svg>
+        </div>
+    </div>
+
+    <div class="navbar">
+        <nav>
+            <a href="{% url 'inicio' %}"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M575.8 255.5c0 18-15 32.1-32 32.1l-32 0 .7 160.2c0 2.7-.2 5.4-.5 8.1l0 16.2c0 22.1-17.9 40-40 40l-16 0c-1.1 0-2.2 0-3.3-.1c-1.4 .1-2.8 .1-4.2 .1L416 512l-24 0c-22.1 0-40-17.9-40-40l0-24 0-64c0-17.7-14.3-32-32-32l-64 0c-17.7 0-32 14.3-32 32l0 64 0 24c0 22.1-17.9 40-40 40l-24 0-31.9 0c-1.5 0-3-.1-4.5-.2c-1.2 .1-2.4 .2-3.6 .2l-16 0c-22.1 0-40-17.9-40-40l0-112c0-.9 0-1.9 .1-2.8l0-69.7-32 0c-18 0-32-14-32-32.1c0-9 3-17 10-24L266.4 8c7-7 15-8 22-8s15 2 21 7L564.8 231.5c8 7 12 15 11 24z"/></svg></a>
+            <a href="{% url 'calendario' %}"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M96 32l0 32L48 64C21.5 64 0 85.5 0 112l0 48 448 0 0-48c0-26.5-21.5-48-48-48l-48 0 0-32c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 32L160 64l0-32c0-17.7-14.3-32-32-32S96 14.3 96 32zM448 192L0 192 0 464c0 26.5 21.5 48 48 48l352 0c26.5 0 48-21.5 48-48l0-272z"/></svg></a>
+            <a href="{% url 'profile' %}"><svg class="active" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512l388.6 0c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304l-91.4 0z"/></svg></a>
+        </nav>
+    </div>
+
+    <div class="modal" id="logoutModal">
+        <h3>¿Seguro que quieres salir?</h3>
+        <div class="links">
+            <button class="btn-primary" onclick="window.location.href='{% url "logout" %}';">Salir</button>
+            <button class="btn-secondary">Cancelar</button>
+        </div>
+    </div>
+
+    <div class="modal" id="updateNameModal">
+        <h3>Editar nombre</h3>
+        <form method="POST">
+            {% csrf_token %}
+            {% if messages %}
+                <div class="messages">
+                    {% for message in messages %}
+                        {% if 'name' in message.tags %}
+                            <div class="message {{ message.tags }}">
+                                {{ message }}
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            {% endif %}
+            {{ name_form.as_p }}
+            <div class="links">
+                <button type='submit' class="btn-primary" name="update_name">Guardar</button>
+                <button class="btn-secondary">Cancelar</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="modal" id="updateCedulaModal">
+        <h3>Editar cédula</h3>
+        <form method="POST">
+            {% csrf_token %}
+            {% if messages %}
+                <div class="messages">
+                    {% for message in messages %}
+                        {% if 'cedula' in message.tags %}
+                            <div class="message {{ message.tags }}">
+                                {{ message }}
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            {% endif %}
+            {{ cedula_form.as_p }}
+            <div class="links">
+                <button type='submit' class="btn-primary" name="update_cedula">Guardar</button>
+                <button class="btn-secondary">Cancelar</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="modal" id="deleteModal">
+        <h3>¿Adiós a esta materia?</h3>
+        <div class="links">
+            <form id="deleteForm" method="POST">
+                {% csrf_token %}
+                <button type="submit" class="btn-primary">Eliminar</button>
+            </form>
+            <button class="btn-secondary btn-cancel">Cancelar</button>
+        </div>
+    </div>
+
+    <div class="modal" id="carrerasModal">
+        <h3>Selecciona tu carrera</h3>
+        <div class="carrera_container">
+            {% for carrera in carreras %}
+            <div class="carrera_card">
+                <div class="icon">
+                    {{ carrera.svg_icono|safe }}
+                </div>
+                <div class="txt">
+                    <h3>{{ carrera.nombre }}</h3>
+                    <p><span>Coordinador: </span>{{ carrera.id_coor.nombre }}</p>
+                    <p><span>Semestres: </span>{{ carrera.semestres.count }}</p>
+                </div>
+                <div class="add">
+                    <svg data-target="#semestreModal" data-id="{{ carrera.id }}" class="open-semestres" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 144L48 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l144 0 0 144c0 17.7 14.3 32 32 32s32-14.3 32-32l0-144 144 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-144 0 0-144z"/></svg>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="links">
+            <button class="btn-secondary btn-cancel">Cancelar</button>
+        </div>
+    </div>
+
+    <div class="modal" id="semestreModal">
+        <h3>Selecciona el semestre</h3>
+        <div class="semestre_container" id="semestreContainer">
+        </div>
+        <div class="links">
+            <button class="btn-secondary btn-cancel">Cancelar</button>
+        </div>
+    </div>
+
+    <div class="modal" id="materiasModal">
+        <h3>Selecciona la materia</h3>
+        <div class="materias_modal_container" id="materiasContainer">
+            {% for materiaT in materiasTotales %}
+            <div class="materias_modal_card" data-target="">
+            </div>
+            {% endfor %}
+        </div>
+        <div class="links">
+            <button class="btn-secondary btn-cancel">Cancelar</button>
+        </div>
+    </div>
+
+    <div class="shadow" id="shadow"></div>
+    <script src="{% static 'js/animations.js' %}"></script>
+    <script src="{% static 'js/base.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,195 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'styles/base.css'%}">
+    <link rel="stylesheet" href="{% static 'styles/index.css'%}">
+    <link rel="stylesheet" href="{% static 'styles/profile_prof.css'%}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+    <style>
+        h2 {
+            color: #09244B;
+            margin-bottom: 1rem;
+        }
+
+        label {
+            width: 100%;
+            text-align: start;
+            color: rgba(0, 0, 0, .6);
+            font-size: 1rem;
+            font-weight: bold;
+        }
+
+        textarea {
+            width: 100%;
+            border-radius: 1.56rem;
+            background-color: #fff;
+            padding: 1.25rem 1.875rem;
+            box-shadow: .25rem .25rem 0.5rem rgba(0, 0, 0, .05);
+            border: none;
+            margin-bottom: 2.5rem;
+            color: rgba(0, 0, 0, .6);
+            font-size: 1rem;
+            font-weight: bold;
+        }
+
+        form {
+            width: 100%;
+
+            .messages{
+                position: relative;
+                top: -1rem;
+            }
+
+            button {
+                width: 100%;
+            }
+
+            label {
+                width: 100%;
+                text-align: start;
+                color: rgba(0, 0, 0, .6);
+                font-size: 1rem;
+                font-weight: bold;
+                margin-left: 1rem;
+                opacity: .5;
+            }
+
+            p {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: flex-start;
+            }
+
+            input {
+                width: 100%;
+                border-radius: 1.56rem;
+                background-color: #fff;
+                padding: 1.25rem 1.875rem;
+                box-shadow: .25rem .25rem 0.5rem rgba(0, 0, 0, .05);
+                border: none;
+                margin-bottom: 2rem;
+                color: rgba(0, 0, 0, .6);
+                font-size: 1rem;
+                font-weight: bold;
+            }
+        }
+
+        .materias_container {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            gap: .5rem;
+            padding-bottom: 2rem;
+
+            .materias_card{
+                height: 5rem;  
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                border-radius: 1.56rem;
+                background-color: white;
+                box-shadow: .25rem .25rem 0.5rem rgba(0, 0, 0, .05);
+
+                .icon{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    height: 4.5rem;  
+                    width: 5rem;
+                    padding: 1.4rem;
+
+                    svg {
+                        height: 100%;
+                        fill: #09244B;
+                    }
+                }
+
+                .txt {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+                    justify-content: flex-start;;
+                    height: 5rem;
+                    flex: 1;
+
+                    h3 {
+                        font-size: 1.2rem;
+                        color: #09244B;
+                        text-wrap: nowrap;
+                        position: relative;
+                        top: .8rem;
+                    }
+
+                    p {
+                        line-height: .5rem;
+                        font-weight: bold;
+                        font-size: .75rem;
+                        color: #8491A5;
+                        text-wrap: nowrap;
+                        position: relative;
+                        top: .5rem;
+
+                        span {
+                            color: #3a506f;
+                        }
+                    }
+                }
+            }
+        }
+    </style>
+    <title>Perfil profesor</title>
+</head>
+<body>
+    <header>
+        <h1>Hola, {{ primer_nombre }}</h1>
+        <div class="logo">
+            <img src="{% static 'img/UNEFA TimeLine..png'%}">
+        </div>
+    </header>
+
+    <main>
+        <h2>{% if modo == 'editar' %}Editar{% else %}Nueva{% endif %} Asignatura</h2>
+        <div class="materias_container">
+            <div class="materias_card">
+                <div class="icon">
+                    {{ materia.svg_icono|safe }}
+                </div>
+                <div class="txt">
+                    <h3>{{ materia.nombre }}</h3>
+                    <p><span>Carrera: </span>{{ materia.id_semestre.id_carrera.nombre }}</p>
+                    <p><span>Semestre: </span>{{ materia.id_semestre.numero }}</p>                    
+                </div>
+            </div>
+        </div>
+        <div class="space"></div>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class="links">
+                <button class="btn-primary" type="submit">Guardar</button>
+                <button class="btn-secondary" type="button" onclick="window.location.href='{% url 'profile_prof' %}'">Volver</button>
+            </div>
+        </form>
+        
+    </main>
+    <script>
+        const form = document.querySelector('form');
+        const submitBtn = form.querySelector('button[type="submit"]');
+
+        form.addEventListener('submit', () => {
+            submitBtn.disabled = true;
+            submitBtn.innerText = 'Guardando...'; // Opcional: cambia el texto
+        });
+    </script>
+    <script src="{% static 'js/animations.js' %}"></script>
+    <script src="{% static 'js/base.js' %}"></script>
+</body>
+</html>

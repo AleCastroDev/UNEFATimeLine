@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'styles/base.css'%}">
+    <link rel="stylesheet" href="{% static 'styles/index.css'%}">
+    <link rel="stylesheet" href="{% static 'styles/account.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <title>Signup</title>
+</head>
+<body>
+    <div class="logo">
+        <img src="{% static 'img/UNEFA TimeLine..png'%}">
+    </div>
+    <div class="txt">
+        <h1>Crear cuenta</h1>
+    </div>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.cedula.errors }}
+        {{ form.cedula }}
+
+        {{ form.nombre.errors }}
+        {{ form.nombre }}
+        {% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                    <div class="message {{ message.tags }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+        <div class="svg">
+            {% comment %} <img src="{% static 'img/ilustracion.svg'%}"> {% endcomment %}
+        </div>
+        <div class="links">
+            <button class="btn-primary">Registrarse</button>
+            <p>¿Ya tienes una cuenta? <a href="{% url 'login' %}">Iniciar sesión</a></p>
+        </div>
+    </form>
+    <script src="{% static 'js/base.js' %}"></script>
+</body>
+</html>

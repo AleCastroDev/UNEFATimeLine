@@ -1,0 +1,55 @@
+.nav {
+
+    li {
+
+        &#hoy {
+            box-shadow: none;
+        }
+
+        &#mes {
+            box-shadow: 0 .25rem .25rem rgba(200, 45, 33, 0.2);
+        }
+    }
+}
+
+.dashboard {
+    background-color: rgba(200, 45, 33, 1);
+    box-shadow: 0 0.625rem 0.625rem rgba(200, 45, 33, 0.1);
+
+    .num {
+        h3 {
+            color: rgba(200, 45, 33, 1);
+        }
+    }
+}
+
+.materias_por_dia {
+    h2 {
+
+        span {
+            color: rgba(200, 45, 33, 1);
+            background-color: rgba(200, 45, 33, .5);
+            box-shadow: 0 0.125rem 0.125rem rgba(200, 45, 33, .2);
+        }
+    }
+
+    .container {
+
+        .card{
+            .icon{
+                svg {
+                    fill: #09244B;
+                }
+            }
+
+            .num{
+                color: rgba(200, 45, 33, 1);
+                background-color: rgba(200, 45, 33, .5);
+
+                h4 {
+                    fill: #C82D21;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+    <link rel="stylesheet" href="{% static 'styles/base.css'%}">
+    <link rel="stylesheet" href="{% static 'styles/index.css'%}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="logo">
+        <img src="{% static 'img/UNEFA TimeLine..png'%}">
+    </div>
+    <div class="txt">
+        <h1>¡Bienvenido a UNEFA TimeLines!</h1>
+        <p>Consulta tus asignaciones universitarias de forma clara y rápida.</p>
+    </div>
+    <div class="svg">
+        <img src="{% static 'img/ilustracion.svg'%}">
+    </div>
+    <div class="links">
+        <button class="btn-primary" onclick="window.location.href='{% url 'login' %}'">Iniciar sesión</button>
+        <button class="btn-secondary" onclick="window.location.href='{% url 'registro' %}'">Crear cuenta</button>
+    </div>
+    <script src="{% static 'js/base.js' %}"></script>
+</body>
+</html>
